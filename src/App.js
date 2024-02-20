@@ -1,5 +1,6 @@
 import React from 'react'
 import ExpenseItem from './components/ExpenseItem';
+import './components/ExpenseItem.css'
 
 const App = () => {
 
