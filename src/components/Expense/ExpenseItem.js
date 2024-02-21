@@ -5,8 +5,8 @@ import Card from '../UI/Card';
 import './ExpenseItem.css';
 
 const ExpenseItem = (props) => {
-  // function clickHandler() {}
   const [title, setTitle] = useState(props.title);
+  const [amount,setAmount] = useState(props.amount)
   console.log('ExpenseItem evaluated by React');
   
   const clickHandler = () => {
@@ -14,8 +14,9 @@ const ExpenseItem = (props) => {
     console.log(title);
   };
 
-  const deleteExpense = ()=>{
-    console.log('deleted')
+  const addMoney = ()=>{
+    console.log('clicked')
+    setAmount((prev)=>Number(prev) + 100)
   }
 
   return (
@@ -23,10 +24,10 @@ const ExpenseItem = (props) => {
       <ExpenseDate date={props.date} />
       <div className='expense-item__description'>
         <h2>{title}</h2>
-        <div className='expense-item__price'>${props.amount}</div>
+        <div className='expense-item__price'>${amount}</div>
       </div>
       <button onClick={clickHandler}>Change Title</button>
-      <button onClick={deleteExpense}>Delete Expense</button>
+      <button onClick={addMoney}>Add $100</button>
     </Card>
   );
 }
