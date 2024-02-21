@@ -16,9 +16,7 @@ const AddExpense = () => {
   };
 
   const addExpense = () => {
-    // Implement your logic for adding expense, you can use 'expense' state here
     console.log('Expense added:', expense);
-    // Reset the form after adding the expense
     setExpense({
       title: '',
       amount: '',
