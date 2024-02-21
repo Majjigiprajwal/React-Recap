@@ -7,14 +7,14 @@ import './Expenses.css';
 
 const Expenses = (props) => {
   const [filteredYear, setFilteredYear] = useState('2020');
-  const [filteredExpense,setFilteredExpense] = useState([props.items])
+
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
-    console.log(selectedYear)
-    const newList = props.items.filter((expense)=> selectedYear ===  expense.date.getFullYear())
-    console.log(newList)
-    setFilteredExpense(newList)
   };
+
+  const filteredExpenses = props.items.filter(expense => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
 
   return (
     <div>
@@ -23,7 +23,7 @@ const Expenses = (props) => {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpense.map((expense) => (
+        {filteredExpenses.map((expense) => (
           <ExpenseItem
             key={expense.id}
             title={expense.title}
@@ -31,6 +31,7 @@ const Expenses = (props) => {
             date={expense.date}
           />
         ))}
+        {filteredExpenses.length ===1 ? <p className="text-white">Only one Expense please add more</p> : <></>}
       </Card>
     </div>
   );
